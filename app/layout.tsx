@@ -10,7 +10,6 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   title: "Google Creative Lab Applicant — May Ruzicka",
-  description: "A landing page for Google Tap and a resume for May Ruzicka. Two things that don't exist yet.",
 };
 
 export default function RootLayout({
