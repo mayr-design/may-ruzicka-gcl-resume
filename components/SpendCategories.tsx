@@ -152,7 +152,7 @@ export default function SpendCategories() {
       const ENT_END   = 0.10;
       const HOLD_END  = 0.13;
       const CAMP_START = 0.13;
-      const CAMP_END  = 0.92;
+      const CAMP_END  = 0.96;
 
       const ys    = new Array(N).fill(0) as number[];
       const ops   = new Array(N).fill(1) as number[];
@@ -184,7 +184,7 @@ export default function SpendCategories() {
         activeCY = screenCenter;
 
         // ── PHASE 0.00–0.15: pop out ──────────────────────────────────────────
-        if (campLocal < 0.15) {
+        if (campLocal < 0.22) {
           const t = ease(campLocal / 0.15);
           fp = 0;
           for (let i = 0; i < N; i++) {
@@ -200,8 +200,8 @@ export default function SpendCategories() {
           for (let c = 0; c < 4; c++) { cYs[c] = screenCenter + 600; cOps[c] = 0; }
 
         // ── PHASE 0.15–0.28: flip ─────────────────────────────────────────────
-        } else if (campLocal < 0.28) {
-          const t = ease((campLocal - 0.15) / 0.13);
+        } else if (campLocal < 0.38) {
+          const t = ease((campLocal - 0.22) / 0.16);
           fp = mobile ? 0 : t;
           // The ONE card flips — same card, same position
           ys[campIdx] = screenCenter; ops[campIdx] = 1; flips[campIdx] = t * 180;
@@ -221,8 +221,8 @@ export default function SpendCategories() {
           }
 
         // ── PHASE 0.28–0.72: showcase ─────────────────────────────────────────
-        } else if (campLocal < 0.80) {
-          const showcaseT = (campLocal - 0.28) / 0.52;
+        } else if (campLocal < 0.82) {
+          const showcaseT = (campLocal - 0.38) / 0.44;
           fp = mobile ? 0 : 1;
           ys[campIdx] = screenCenter; ops[campIdx] = 1; flips[campIdx] = 180;
           for (let i = 0; i < N; i++) {
@@ -250,8 +250,8 @@ export default function SpendCategories() {
           }
 
         // ── PHASE 0.72–0.85: collapse ─────────────────────────────────────────
-        } else if (campLocal < 0.92) {
-          const t = ease((campLocal - 0.80) / 0.12);
+        } else if (campLocal < 0.96) {
+          const t = ease((campLocal - 0.82) / 0.14);
           fp = mobile ? 0 : (1 - t);
 
           if (mobile) {
@@ -283,7 +283,7 @@ export default function SpendCategories() {
 
         // ── PHASE 0.85–1.00: stack returns ────────────────────────────────────
         } else {
-          const t = ease((campLocal - 0.92) / 0.08);
+          const t = ease((campLocal - 0.96) / 0.04);
           fp = 0;
           for (let c = 0; c < 4; c++) { cYs[c] = screenCenter; cOps[c] = 0; }
 
@@ -331,7 +331,7 @@ export default function SpendCategories() {
         id="spend-categories"
         ref={sectionRef}
         className="bg-black text-white relative z-30"
-        style={{ height: `${N * 160 + 80}vh` }}
+        style={{ height: `${N * 350 + 80}vh` }}
       >
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden bg-black">
 

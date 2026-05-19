@@ -61,7 +61,10 @@ export default function Hero() {
 
       // Show/hide mobile vs desktop
       if (mobileWrapRef.current)  mobileWrapRef.current.style.display  = mobile ? "block" : "none";
-      if (desktopWrapRef.current) desktopWrapRef.current.style.display = mobile ? "none"  : "block";
+      if (desktopWrapRef.current) {
+        desktopWrapRef.current.style.display = mobile ? "none" : "block";
+        desktopWrapRef.current.style.pointerEvents = mobile ? "none" : "auto";
+      }
 
       // ── MOBILE SCROLL BUDGET ──────────────────────────────────────────────
       // 0.00–0.30  cards fan DOWN
@@ -73,7 +76,10 @@ export default function Hero() {
       if (mobile) {
         if (bgGradientRef.current) bgGradientRef.current.style.opacity = String(phase(sP, 0.80, 1.00));
         if (bgWhiteRef.current)    bgWhiteRef.current.style.opacity    = "1"; // stays white until gradient takes over
-        if (scrollGuideRef.current) scrollGuideRef.current.style.opacity = sP > 0.05 ? "0" : String(1 - sP * 20);
+        if (scrollGuideRef.current) {
+  scrollGuideRef.current.style.opacity = sP > 0.05 ? "0" : String(1 - sP * 20);
+  scrollGuideRef.current.style.pointerEvents = sP > 0.05 ? "none" : "auto";
+}
 
         // Hero text — only after cards fully gone
         if (heroTextRef.current) {
@@ -150,6 +156,7 @@ export default function Hero() {
           if (!el) return;
           el.style.opacity   = isAnchor ? "1" : String(eP);
           el.style.transform = `translate(calc(-50% + ${tx * eP}vw), calc(-50% + ${ty * eP}vh))`;
+          el.style.pointerEvents = isAnchor ? "auto" : "none";
         }
 
         applyCard(deskArtRef.current,  -rx * 0.62, -ry * 0.72, true);
@@ -231,6 +238,7 @@ export default function Hero() {
               <div
                 key={card.label}
                 ref={(el) => { mobileRefs.current[i] = el; }}
+                onClick={i === 0 ? () => window.scrollBy({ top: window.innerHeight * 0.4, behavior: "smooth" }) : undefined}
                 style={{
                   position: "absolute",
                   top: 0, left: 0,
@@ -246,6 +254,7 @@ export default function Hero() {
                   gap: "4px",
                   opacity: i === 0 ? 1 : 0,
                   willChange: "transform, opacity",
+                  cursor: i === 0 ? "pointer" : "default",
                 }}
               >
                 <div style={{ width: "40px", height: "26px", borderRadius: "6px", background: "rgba(255,255,255,0.25)", marginBottom: "8px" }} />
@@ -263,7 +272,7 @@ export default function Hero() {
         {/* ── DESKTOP CARDS ── */}
         <div
           ref={desktopWrapRef}
-          className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none"
+          className="absolute inset-0 flex items-center justify-center z-20"
           style={{ display: "none" }}
         >
           <div className="relative w-full h-full flex items-center justify-center">
@@ -277,8 +286,9 @@ export default function Hero() {
               <div
                 key={label}
                 ref={ref}
-                className="absolute w-[261px] h-[162px] sm:w-[306px] sm:h-[189px] rounded-[1.6rem] bg-[#4285F4] p-5 sm:p-6 flex flex-col justify-end gap-2.5 items-start"
-                style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", opacity: isAnchor ? 1 : 0 }}
+                onClick={isAnchor ? () => window.scrollBy({ top: window.innerHeight * 1.5, behavior: "smooth" }) : undefined}
+                className="absolute w-[261px] h-[162px] sm:w-[306px] sm:h-[189px] rounded-[1.6rem] bg-[#4285F4] p-5 sm:p-6 flex flex-col justify-end gap-2.5 items-start pointer-events-auto"
+                style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)", opacity: isAnchor ? 1 : 0, cursor: isAnchor ? "pointer" : "default" }}
               >
                 <div className="w-10 h-7 sm:w-12 sm:h-8 rounded-md sm:rounded-lg bg-white/25" />
                 <div className="text-left select-none flex flex-col gap-0.5 w-full">
@@ -301,9 +311,11 @@ export default function Hero() {
         {/* Scroll guide */}
         <div
           ref={scrollGuideRef}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 cursor-pointer select-none pointer-events-auto"
+          onClick={() => window.scrollBy({ top: window.innerHeight * 0.5, behavior: "smooth" })}
         >
-          <svg className="w-5 h-5 text-gray-400 animate-bounce" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <span className="text-[13px] gs-medium text-gray-500 uppercase tracking-wide">Scroll to begin</span>
+          <svg className="w-7 h-7 text-gray-500 animate-bounce" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
           </svg>
         </div>

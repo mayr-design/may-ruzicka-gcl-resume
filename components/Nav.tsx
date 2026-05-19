@@ -9,9 +9,26 @@ export default function Nav() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+  const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Auto-detect active section
+    const observers: IntersectionObserver[] = [];
+    links.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActive(id); },
+        { threshold: window.innerWidth < 768 ? 0.01 : (id === "spend-categories" || id === "top-rewards") ? 0.01 : 0.3 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observers.forEach(o => o.disconnect());
+    };
   }, []);
 
   const handleHScroll = () => {
@@ -54,6 +71,7 @@ export default function Nav() {
             <a
               key={link.id}
               href={`#${link.id}`}
+              ref={(el) => { if (el && active === link.id) el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" }); }}
               onClick={() => setActive(link.id)}
               className="transition-all duration-200 rounded-full px-4 py-1.5 whitespace-nowrap flex-shrink-0 hover:bg-black/[0.05]"
               style={{

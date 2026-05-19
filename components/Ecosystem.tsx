@@ -78,9 +78,9 @@ export default function Ecosystem() {
         <div className="relative w-full h-12 my-12 select-none">
           <div className="absolute top-1/2 left-0 w-full h-[5px] -translate-y-1/2" style={{ background: gradient }} />
           <div className="max-w-5xl w-full mx-auto px-6 sm:px-12 md:px-16 h-full relative">
-            <div className="absolute left-6 sm:left-12 md:left-16 top-0 h-full flex flex-col justify-between items-start text-[11px] text-neutral-400 tracking-tight z-20">
-              <span>↑ Google Tap</span>
-              <span>↓ May Ruzicka</span>
+            <div className="absolute left-2 top-0 h-full justify-between items-start z-20" style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: "6px" }}>
+              <span className="gs-regular text-neutral-900 text-[16px]">↑ Google Tap</span>
+              <span className="gs-regular text-neutral-900 text-[16px]">↓ May Ruzicka</span>
             </div>
             <div className="grid grid-cols-3 gap-12 md:gap-16 h-full w-full relative">
               {dotColors.map((color, i) => (
@@ -150,6 +150,12 @@ export default function Ecosystem() {
 
                 {/* Connector row with continuous gradient line */}
                 <div className="relative flex items-center justify-center" style={{ height: "52px" }}>
+  {idx === 0 && (
+    <div className="fixed left-3 flex flex-col gap-1 items-start z-50" style={{ whiteSpace: "nowrap" }}>
+      <span className="gs-regular text-neutral-900 text-[13px]">↑ Google Tap</span>
+      <span className="gs-regular text-neutral-900 text-[13px]">↓ May Ruzicka</span>
+    </div>
+  )}
                   {idx === 0 && (
                     <div
                       className="absolute h-[5px] pointer-events-none"
