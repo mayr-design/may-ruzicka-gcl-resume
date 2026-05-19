@@ -1,26 +1,340 @@
-@import "tailwindcss";
+@import url('https://fonts.cdnfonts.com/css/google-sans');
+@import url('https://fonts.cdnfonts.com/css/product-sans');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ============================================
+   BASE STYLES
+   ============================================ */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Product Sans', 'Google Sans', 'Figtree', sans-serif;
+  overflow-x: hidden;
+  background-color: #ffffff;
+}
+
+/* Global letter spacing */
+body, h1, h2, h3, h4, h5, h6, p, a, span, div, button {
+  letter-spacing: -0.018em;
+}
+
+/* ============================================
+   FONT WEIGHT CLASSES
+   ============================================ */
+.gs-thin {
+  font-family: 'Figtree', 'Product Sans', 'Google Sans', sans-serif;
+  font-weight: 300 !important;
+}
+.gs-regular {
+  font-family: 'Figtree', 'Product Sans', 'Google Sans', sans-serif;
+  font-weight: 300 !important;
+}
+.gs-medium {
+  font-family: 'Product Sans', 'Google Sans', 'Figtree', sans-serif;
+  font-weight: 500 !important;
+}
+.gs-semibold {
+  font-family: 'Product Sans', 'Google Sans', 'Figtree', sans-serif;
+  font-weight: 600 !important;
+}
+.gs-bold {
+  font-family: 'Product Sans', 'Google Sans', 'Figtree', sans-serif;
+  font-weight: 600 !important;
+}
+.gs-body-bold {
+  font-family: 'Figtree', 'Product Sans', 'Google Sans', sans-serif;
+  font-weight: 600 !important;
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
+.shadow-nav {
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* 3D card transforms */
+.preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Hero GPS pulse */
+@keyframes pulse-gps {
+  0%   { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
+
+/* Detect card slide up */
+@keyframes detect-card-slide {
+  0%, 15%   { transform: translateY(140%); opacity: 0; }
+  28%, 85%  { transform: translateY(0);    opacity: 1; }
+  95%, 100% { transform: translateY(140%); opacity: 0; }
+}
+
+/* Earn pill pulse */
+@keyframes earn-pill {
+  0%, 28%   { transform: scale(0.95); opacity: 0.4; filter: grayscale(40%); }
+  36%, 75%  { transform: scale(1);    opacity: 1;   filter: grayscale(0%);  }
+  83%, 100% { transform: scale(0.95); opacity: 0.4; filter: grayscale(40%); }
+}
+
+/* Subway train scroll */
+@keyframes subway-travel {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ============================================
+   STEP 2 SELECT - CARD STACK ANIMATION
+   ============================================ */
+.s2-stack {
+  position: relative;
+  width: 200px;
+  height: 180px;
+}
+.s2-card {
+  position: absolute;
+  width: 200px;
+  height: 115px;
+  border-radius: 16px;
+  left: 0;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.s2-c3 { background: #2d2635; top: 30px; z-index: 1; }
+.s2-c2 { background: #d4d4d4; top: 40px; z-index: 2; }
+.s2-c1 {
+  background: #4285F4;
+  top: 50px;
+  z-index: 3;
+  animation: s2-liftUp 2.6s cubic-bezier(.4,0,.2,1) infinite;
+  box-shadow: 0 8px 24px rgba(66,133,244,.25);
+}
+@keyframes s2-liftUp {
+  0%,15%   { transform: translateY(0);     box-shadow: 0 8px 24px rgba(66,133,244,.25); }
+  40%,70%  { transform: translateY(-42px); box-shadow: 0 24px 40px rgba(66,133,244,.35); }
+  95%,100% { transform: translateY(0);     box-shadow: 0 8px 24px rgba(66,133,244,.25); }
+}
+.s2-chip {
+  width: 24px;
+  height: 18px;
+  border-radius: 3px;
+  background: rgba(255,255,255,.2);
+  margin-bottom: 8px;
+}
+.s2-c3 .s2-chip { background: rgba(255,255,255,.12); }
+.s2-c2 .s2-chip { background: rgba(0,0,0,.12); }
+.s2-cn {
+  font-family: 'Product Sans', 'Google Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,.9);
+}
+.s2-cp {
+  font-family: 'Figtree', sans-serif;
+  font-size: 9px;
+  color: rgba(255,255,255,.55);
+  margin-top: 2px;
+}
+.s2-c2 .s2-cn { color: rgba(0,0,0,.6); }
+.s2-c2 .s2-cp { color: rgba(0,0,0,.35); }
+.s2-c3 .s2-cn { color: rgba(255,255,255,.5); }
+.s2-c3 .s2-cp { color: rgba(255,255,255,.25); }
+.s2-c1 .s2-cp { color: rgba(255,255,255,.85); }
+
+.s2-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #FBBC04;
+  color: #7A5000;
+  font-family: 'Product Sans', 'Google Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 100px;
+  letter-spacing: .04em;
+  opacity: 0;
+  animation: s2-showBadge 2.6s ease infinite;
+}
+@keyframes s2-showBadge {
+  0%,25%   { opacity: 0; transform: scale(.8); }
+  45%,70%  { opacity: 1; transform: scale(1);  }
+  90%,100% { opacity: 0; transform: scale(.8); }
+}
+
+/* ============================================
+   STEP 3 EARN - NFC TAP ANIMATION
+   ============================================ */
+.scene {
+  position: relative;
+  width: 300px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phone {
+  position: absolute;
+  left: 10px;
+  width: 96px;
+  height: 172px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgba(0,0,0,.12);
+  animation: phoneNudge 2.4s cubic-bezier(.4,0,.2,1) infinite;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+  gap: 8px;
+}
+@keyframes phoneNudge {
+  0%,20%   { transform: translateX(0); }
+  45%,65%  { transform: translateX(36px); }
+  90%,100% { transform: translateX(0); }
+}
+.gw-label {
+  font-size: 6px;
+  color: #aaa;
+  letter-spacing: .06em;
+  align-self: flex-start;
+}
+.phone-card {
+  width: 76px;
+  height: 50px;
+  background: #4285F4;
+  border-radius: 6px;
+  padding: 7px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.chip {
+  width: 18px;
+  height: 13px;
+  background: rgba(255,255,255,.25);
+  border-radius: 2px;
+}
+.card-dots { display: flex; gap: 2px; align-self: flex-end; }
+.dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,.3); }
+
+.ripples {
+  position: absolute;
+  left: 122px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.ripple-arc {
+  border: 2px solid #34A853;
+  border-left: none;
+  opacity: 0;
+  animation: arcPulse 2.4s ease infinite;
+}
+.ripple-arc:nth-child(1) { width: 10px; height: 10px; border-radius: 0 10px 10px 0; animation-delay: .0s; }
+.ripple-arc:nth-child(2) { width: 16px; height: 16px; border-radius: 0 16px 16px 0; animation-delay: .1s; }
+.ripple-arc:nth-child(3) { width: 22px; height: 22px; border-radius: 0 22px 22px 0; animation-delay: .2s; }
+@keyframes arcPulse {
+  0%,30%   { opacity: 0; }
+  45%,65%  { opacity: 1; }
+  85%,100% { opacity: 0; }
+}
+
+.terminal {
+  position: absolute;
+  right: 10px;
+  width: 88px;
+  height: 172px;
+  background: #e4e4e4;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  z-index: 1;
+}
+.terminal-screen {
+  width: 100%;
+  background: white;
+  border-radius: 5px;
+  padding: 7px 6px;
+  margin-bottom: 8px;
+}
+.terminal-amount { font-size: 12px; font-weight: 700; color: #1a1a1a; text-align: center; }
+.terminal-store  { font-size: 6px; color: #aaa; text-align: center; margin-top: 2px; }
+.terminal-nfc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 8px;
+}
+.nfc-arc {
+  border: 1.5px solid #34A853;
+  border-bottom: none;
+  border-radius: 40px 40px 0 0;
+  opacity: 0;
+  animation: nfcPulse 2.4s ease infinite;
+}
+.nfc-arc:nth-child(1) { width: 8px;  height: 5px;  animation-delay: .05s; }
+.nfc-arc:nth-child(2) { width: 16px; height: 9px;  animation-delay: .15s; }
+.nfc-arc:nth-child(3) { width: 24px; height: 13px; animation-delay: .25s; }
+@keyframes nfcPulse {
+  0%,30%   { opacity: 0; }
+  50%,65%  { opacity: 1; }
+  85%,100% { opacity: 0; }
+}
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  width: 100%;
+  margin-top: auto;
+}
+.key { background: #cecece; border-radius: 3px; height: 13px; }
+
+.success {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #34A853;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation: showCheck 2.4s ease infinite;
+  z-index: 3;
+}
+@keyframes showCheck {
+  0%,55%   { opacity: 0; transform: translate(-50%,-50%) scale(.6); }
+  70%,80%  { opacity: 1; transform: translate(-50%,-50%) scale(1);  }
+  92%,100% { opacity: 0; transform: translate(-50%,-50%) scale(.6); }
 }
