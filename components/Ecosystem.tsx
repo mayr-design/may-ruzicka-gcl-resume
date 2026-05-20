@@ -38,13 +38,13 @@ export default function Ecosystem() {
       num: "02", logo: "/google_maps_logo.png", logoAlt: "Google Maps", logoWide: false,
       topText: <><span className="gs-bold text-neutral-900">Google Maps</span> identifies the merchant</>,
       year: "2025", src: "/2025.gif", imgAlt: "Flow TV Showcase",
-      bottomText: <>When SpecialGuestX hit 50 posts on <span className="gs-bold text-neutral-900">Google&apos;s Flow TV</span>, my boss asked for a presentation. I built a filterable website instead — organized by platform, content type, and account.</>,
+      bottomText: <>When SpecialGuestX hit 50 posts on <span className="gs-bold text-neutral-900">Google&apos;s Flow TV</span>, my boss asked for a presentation. I built a filterable website instead, organized by platform, content type, and account.</>,
     },
     {
       num: "03", logo: "/google_pay_logo.png", logoAlt: "Google Pay", logoWide: true,
       topText: <><span className="gs-bold text-neutral-900">Google Pay</span> completes the payment</>,
       year: "2026", src: "/2026.gif", imgAlt: "Lyft Local Tour",
-      bottomText: <>I&apos;m currently leading a <span className="gs-bold text-neutral-900">Google Lighthouse</span> project called &apos;Lyft Local&apos; — a Lyft feature that turns every ride into a guided tour of the city.</>,
+      bottomText: <>I&apos;m currently leading a <span className="gs-bold text-neutral-900">Google Lighthouse</span> project called &apos;Lyft Local&apos;. A Lyft feature that turns every ride into a guided tour of the city.</>,
     },
   ];
 

@@ -234,7 +234,7 @@ export default function HowItWorks() {
             <div className="space-y-4 px-1">
               <h3 className="text-2xl gs-bold text-white tracking-tight">3. Earn</h3>
               <p className="gs-medium text-white/70 text-[18px] leading-snug">
-                I make work that earns attention — in the press, in culture, in the feed.
+                I make work that earns attention in the press, in culture, in the feed.
               </p>
             </div>
           </div>

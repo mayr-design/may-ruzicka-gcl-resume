@@ -1,7 +1,7 @@
 export default function Rewards() {
   const awards = [
     { count: "6X", label: "The Clio Awards" },
-    { count: "4X", label: "The One Show" },
+    { count: "4X", label: "The One Show Awards" },
     { count: "1X", label: "Cannes Lions Shortlist" },
     { count: "4X", label: "Indigo Design Awards" },
   ];
