@@ -184,8 +184,8 @@ export default function SpendCategories() {
         activeCY = screenCenter;
 
         // ── PHASE 0.00–0.15: pop out ──────────────────────────────────────────
-        if (campLocal < 0.22) {
-          const t = ease(campLocal / 0.15);
+        if (campLocal < 0.25) {
+          const t = ease(campLocal / 0.25);
           fp = 0;
           for (let i = 0; i < N; i++) {
             if (i === campIdx) {
@@ -200,8 +200,8 @@ export default function SpendCategories() {
           for (let c = 0; c < 4; c++) { cYs[c] = screenCenter + 600; cOps[c] = 0; }
 
         // ── PHASE 0.15–0.28: flip ─────────────────────────────────────────────
-        } else if (campLocal < 0.38) {
-          const t = ease((campLocal - 0.22) / 0.16);
+        } else if (campLocal < 0.42) {
+          const t = ease((campLocal - 0.25) / 0.17);
           fp = mobile ? 0 : t;
           // The ONE card flips — same card, same position
           ys[campIdx] = screenCenter; ops[campIdx] = 1; flips[campIdx] = t * 180;
@@ -221,8 +221,8 @@ export default function SpendCategories() {
           }
 
         // ── PHASE 0.28–0.72: showcase ─────────────────────────────────────────
-        } else if (campLocal < 0.82) {
-          const showcaseT = (campLocal - 0.38) / 0.44;
+        } else if (campLocal < 0.78) {
+          const showcaseT = (campLocal - 0.42) / 0.36;
           fp = mobile ? 0 : 1;
           ys[campIdx] = screenCenter; ops[campIdx] = 1; flips[campIdx] = 180;
           for (let i = 0; i < N; i++) {
@@ -251,7 +251,7 @@ export default function SpendCategories() {
 
         // ── PHASE 0.72–0.85: collapse ─────────────────────────────────────────
         } else if (campLocal < 0.96) {
-          const t = ease((campLocal - 0.82) / 0.14);
+          const t = ease((campLocal - 0.78) / 0.18);
           fp = mobile ? 0 : (1 - t);
 
           if (mobile) {

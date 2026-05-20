@@ -196,7 +196,7 @@ export default function HowItWorks() {
             <div className="w-full aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
               <img src="/detect.gif" alt="Interactive Netflix presentation deck" className="w-full h-full object-cover" />
             </div>
-            <p className="gs-regular text-neutral-400 text-[11px] leading-snug px-1 select-none">
+            <p className="gs-regular text-neutral-400 text-[11px] leading-snug px-1 select-none" style={{ minHeight: "2.8em" }}>
               Vibe coded an interactive presentation deck for Netflix
             </p>
             <div className="space-y-4 px-1">
@@ -212,7 +212,7 @@ export default function HowItWorks() {
             <div className="w-full aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
               <img src="/select.gif" alt="Self-produced Doritos spot" className="w-full h-full object-cover" />
             </div>
-            <p className="gs-regular text-neutral-400 text-[11px] leading-snug px-1 select-none">
+            <p className="gs-regular text-neutral-400 text-[11px] leading-snug px-1 select-none" style={{ minHeight: "2.8em" }}>
               Self produced, directed, and scored Doritos spot
             </p>
             <div className="space-y-4 px-1">
@@ -228,7 +228,7 @@ export default function HowItWorks() {
             <div className="w-full aspect-[4/3] rounded-[1.25rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
               <img src="/earn.png" alt="Fast Company press coverage" className="w-full h-full object-cover object-top" />
             </div>
-            <p className="gs-regular text-neutral-400 text-[11px] leading-snug px-1 select-none">
+            <p className="gs-regular text-neutral-400 text-[11px] leading-snug px-1 select-none" style={{ minHeight: "2.8em" }}>
               Fast Company coverage of Check Lyft campaign which earned 467 million impressions
             </p>
             <div className="space-y-4 px-1">

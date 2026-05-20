@@ -8,11 +8,11 @@ const CARD_W = 306;
 const CARD_H = 189;
 
 const mobileCardData = [
-  { label: "May Ruzicka",           sub: "2026 GLC5", color: "#4285F4" },
-  { label: "Visual Storyteller",    sub: "2026 GLC5", color: "#FE2C25" },
-  { label: "Designer",              sub: "2026 GLC5", color: "#FFBB00" },
-  { label: "Creative Technologist", sub: "2026 GLC5", color: "#34A853" },
-  { label: "Art Director",          sub: "2026 GLC5", color: "#4285F4" },
+  { label: "May Ruzicka",           sub: "2026 GCL5", color: "#4285F4" },
+  { label: "Visual Storyteller",    sub: "2026 GCL5", color: "#FE2C25" },
+  { label: "Designer",              sub: "2026 GCL5", color: "#FFBB00" },
+  { label: "Creative Technologist", sub: "2026 GCL5", color: "#34A853" },
+  { label: "Art Director",          sub: "2026 GCL5", color: "#4285F4" },
 ];
 const N = mobileCardData.length;
 
@@ -292,7 +292,7 @@ export default function Hero() {
               >
                 <div className="w-10 h-7 sm:w-12 sm:h-8 rounded-md sm:rounded-lg bg-white/25" />
                 <div className="text-left select-none flex flex-col gap-0.5 w-full">
-                  <div className="gs-medium text-base sm:text-xl text-white leading-[1.05]">2026 GLC5</div>
+                  <div className="gs-medium text-base sm:text-xl text-white leading-[1.05]">2026 GCL5</div>
                   {isAnchor ? (
                     <div className="relative h-5 sm:h-7 w-full overflow-hidden">
                       <div ref={labelMayRef} className="absolute inset-0 gs-medium text-sm sm:text-lg text-white leading-[1.05]">May Ruzicka</div>
