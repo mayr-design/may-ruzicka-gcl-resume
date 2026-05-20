@@ -40,7 +40,7 @@ export default function WhyThis() {
             Well, that would be like having a multi-disciplinary creative directly in Google Creative Labs that doesn&apos;t default to the easiest solution. One who directs, designs, builds, and thinks in systems, not safety, especially when it matters most.
           </p>
           <p className="gs-body-bold text-neutral-950 leading-[1.45]">
-            So for my GCL5 application, I simultaneously built a landing page for a product that doesn&apos;t exist yet and a person you haven&apos;t met yet. Scroll down to tap in!
+            So for my GCL5 application, I wanted to make my resume a landing page for a product that doesn&apos;t exist yet and a person you haven&apos;t met yet. Scroll down to tap in!
           </p>
         </div>
 
